@@ -26,7 +26,7 @@ executable: /app/kestra
 ### Deployments
 deployments:
   webserver:
-    enabled: true
+    enabled: false
     kind: Deployment
     replicaCount: 1
     command: "server webserver"
@@ -59,22 +59,22 @@ deployments:
       #        averageValue: 100Mi
 
   executor:
-    enabled: true
+    enabled: false
     kind: Deployment
     command: "server executor"
 
   indexer:
-    enabled: true
+    enabled: false
     kind: Deployment
     command: "server indexer"
 
   scheduler:
-    enabled: true
+    enabled: false
     kind: Deployment
     command: "server scheduler"
 
   worker:
-    enabled: true
+    enabled: false
     kind: Deployment
     command: "server worker --thread=128"
     terminationGracePeriodSeconds: 60
@@ -231,7 +231,7 @@ securityContext:
 ### Readiness / Liveness probe config.
 ### ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
 readinessProbe:
-  enabled: false
+  enabled: true
   path: /health
   port: management
   initialDelaySeconds: 5
@@ -242,7 +242,7 @@ readinessProbe:
   httpGetExtra: {}
 
 livenessProbe:
-  enabled: false
+  enabled: true
   path: /health
   port: management
   initialDelaySeconds: 5
