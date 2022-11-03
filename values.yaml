@@ -26,7 +26,7 @@ executable: /app/kestra
 ### Deployments
 deployments:
   webserver:
-    enabled: false
+    enabled: true
     kind: Deployment
     replicaCount: 1
     command: "server webserver"
