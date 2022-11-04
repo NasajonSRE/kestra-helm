@@ -10,26 +10,12 @@ imagePullSecrets: []
 ### Configurations for deployments
 configuration: 
   kestra:
-    minio:
-      endpoint: "minio"
-      port: "9000"
-      accessKey: "a"
-      secretKey: "b"
-      region: "r"
-      bucket: "u"
-    kafka:
-      client:
-        properties:
-          bootstrap.servers: "kafka:9092"
     queue:
       type: kafka
-    elasticsearch:
-      client:
-        http-hosts: http://elasticsearch:9200
     repository:
       type: elasticsearch
     storage:
-    type: minio
+      type: minio
 
 
 ### Secrets for deployments
