@@ -8,7 +8,21 @@ imagePullSecrets: []
 
 
 ### Configurations for deployments
-configuration: {}
+configuration: 
+  kestra:
+    kafka:
+      client:
+        properties:
+          bootstrap.servers: "kafka:9092"
+    queue:
+      type: kafka
+    elasticsearch:
+      client:
+        http-hosts: http://elasticsearch:9200
+    repository:
+      type: elasticsearch
+    # storage:
+    # type: minio
 
 
 ### Secrets for deployments
@@ -107,11 +121,11 @@ dind:
 
 ### Kafka
 kafka:
-  enabled: false
+  enabled: true
 
 ### ElasticSearch
 elasticsearch:
-  enabled: false
+  enabled: true
   clusterName: "es-kestra"
 
   esConfig:
@@ -129,11 +143,11 @@ elasticsearch:
 ### Minio
 minio:
   enabled: false
-  rootUser: please-change-me
-  rootPassword: its-not-a-secret
+  rootUser: teste
+  rootPassword: teste
   mode: standalone
   persistence:
-    size: 8Gi
+    size: 1Gi
   buckets:
     - name: kestra
       policy: none
@@ -162,13 +176,13 @@ service:
 
 ### Ingress
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: run.nasajon.in
       paths:
         - path: /
           pathType: ImplementationSpecific
