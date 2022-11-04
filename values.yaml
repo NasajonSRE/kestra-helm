@@ -21,8 +21,8 @@ configuration:
         http-hosts: http://elasticsearch:9200
     repository:
       type: elasticsearch
-    # storage:
-    # type: minio
+    storage:
+    type: minio
 
 
 ### Secrets for deployments
@@ -142,7 +142,7 @@ elasticsearch:
 
 ### Minio
 minio:
-  enabled: false
+  enabled: true
   rootUser: teste
   rootPassword: teste
   mode: standalone
